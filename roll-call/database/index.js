@@ -8,7 +8,7 @@ const connection = mysql.createConnection({
 });
 
 const selectAll = (callback) => {
-  connection.query('SELECT * FROM items', function (err, results, fields) {
+  connection.query('SELECT * FROM userInfo', function (err, results, fields) {
     if (err) {
       callback(err, null);
     } else {
