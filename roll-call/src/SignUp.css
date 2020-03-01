@@ -1,0 +1,84 @@
+form {
+  margin: 4% auto;
+  background-color: #f7f7f7;
+  /* border: 1px solid black; */
+  width: 400px;
+  height: 380px;
+  font-family: 'Roboto', sans-serif;
+}
+
+body{
+  background-color: #f7f7f7
+}
+
+#signUpLabel{
+  font-size: 30px;
+  line-height: 40px;
+  display: block;
+  text-align: center;
+  font-family: poppins,sans-serif;
+    /* font-size: 1.5em; */
+    margin-block-start: 0.83em;
+    margin-block-end: 0.83em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+}
+
+
+input, select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0px;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  background-color: #f7f7f7;
+}
+
+/* Options{
+  padding: 12px 20px;
+  margin: 8px 0px;
+} */
+
+button {
+  /* background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%; */
+  
+}
+
+.btn_1 {
+  /* display: inline-block;
+  padding: 13.5px 45px;
+  border-radius: 50px;
+  font-size: 14px;
+  color: #fff;
+  -o-transition: all .4s ease-in-out;
+  -webkit-transition: all .4s ease-in-out;
+  transition: all .4s ease-in-out;
+  text-transform: capitalize;
+  background-size: 200% auto;
+  border: 1px solid transparent;
+  box-shadow: 0px 12px 20px 0px rgba(255, 126, 95, 0.15); */
+  /* color: black */
+}
+
+/* line 38, E:/172 Etrain Education/172_Etrain_Education_html/sass/_button.scss */
+/* .btn_1:hover {
+  color: #fff !important;
+  background-position: right center;
+  box-shadow: 0px 10px 30px 0px rgba(193, 34, 10, 0.2);
+} */
+
+/* button:hover {
+  opacity: 0.8;
+} */
+
+.container {
+  padding: 16px;
+}

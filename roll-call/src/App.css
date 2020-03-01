@@ -2496,7 +2496,7 @@ ul {
 /**************** banner part css start ****************/
 /* line 2, E:/172 Etrain Education/172_Etrain_Education_html/sass/_banner.scss */
 .banner_part {
-  height: 880px;
+  height: 700px;
   position: relative;
   overflow: hidden;
   background-image: url(./img/banner_bg.png);
@@ -2549,7 +2549,8 @@ ul {
 /* line 34, E:/172 Etrain Education/172_Etrain_Education_html/sass/_banner.scss */
 .banner_part .banner_text .banner_text_iner {
   display: table-cell;
-  vertical-align: middle;
+  padding-top: 150px;
+  /* vertical-align: middle; */
 }
 
 @media (max-width: 576px) {
@@ -2770,7 +2771,7 @@ ul {
 /* line 164, E:/172 Etrain Education/172_Etrain_Education_html/sass/_banner.scss */
 .banner_part:after {
   position: absolute;
-  top: 163px;
+  top: 100px;
   width: 41%;
   height: 69%;
   content: "";
