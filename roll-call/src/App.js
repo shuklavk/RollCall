@@ -20,9 +20,9 @@ function App() {
                       A new way to raise grades. System to track the attendance/performance of students and reward
                       those who show up.
                   </p>
-                    {/* <Link to="/r"> */}
+                    <Link to="/login">
                       <a href="#" className="btn_1">Log In </a>
-                    {/* </Link> */}
+                    </Link>
                     <Link to="/signup">
                       <button className="btn_2">Sign Up </button>
                     </Link>

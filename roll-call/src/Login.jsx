@@ -1,11 +1,10 @@
 import React from 'react';
 import $ from 'jquery';
-import './SignUp.css';
-import Options from './Options'
+import './Login.css';
 import {withRouter} from 'react-router';
 
 
-class SignUp extends React.Component {
+class Login extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -55,17 +54,9 @@ class SignUp extends React.Component {
       // Used MDN Docs for inputs to verify if entered/ if correctly entered an email
       <div>
         <h1 id="signUpLabel">
-          Sign Up For Roll Call
+          Login to Roll Call
         </h1>
-        <form action="/login" method="get" onSubmit={() => this.onSumbitClick()}>
-          <div >
-            {/* <label htmlFor="firstName">Enter your first name: </label> */}
-            <input type="text" name="firstName" id="firstName" placeholder="First Name" required onChange={(e) => { this.onFirstNameChange(e.target.value) }} />
-          </div>
-          <div >
-            {/* <label htmlFor="lastName">Enter your last name: </label> */}
-            <input type="text" name="lastName" placeholder="Last Name" id="lastName" required onChange={(e) => { this.onLastNameChange(e.target.value) }} />
-          </div>
+        <form action="" method="get" onSubmit={() => this.onSumbitClick()}>
           <div >
             {/* <label htmlFor="email">Enter your email: </label> */}
             <input type="email" name="email" placeholder="Email" id="email" required onChange={(e) => { this.onEmailChange(e.target.value) }} />
@@ -74,14 +65,11 @@ class SignUp extends React.Component {
             {/* <label htmlFor="email">Enter your email: </label> */}
             <input type="password" name="password" placeholder="Password" id="password" required onChange={(e) => { this.onEmailChange(e.target.value) }} />
           </div>
-          <div>
-              <Options />
-          </div>
           <div >
-            <input className='btn_1' type="submit" value="Sign Up!" />
+            <input className='btn_1' type="submit" value="Login" />
           </div>
           <div id="alreadyUser">
-            <h6>Already an user? <a href="/login">Login</a></h6>
+            <h6>New User? <a href="/signup">Sign Up</a></h6>
           </div>
         </form>
       </div>
@@ -89,4 +77,4 @@ class SignUp extends React.Component {
   }
 }
 
-export default withRouter(SignUp);
+export default (Login);
