@@ -2,9 +2,10 @@ import React from 'react';
 import $ from 'jquery';
 import './SignUp.css';
 import Options from './Options'
+import {withRouter} from 'react-router';
 
 
-class App2 extends React.Component {
+class SignUp extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -85,4 +86,4 @@ class App2 extends React.Component {
   }
 }
 
-export default App2;
+export default withRouter(SignUp);
