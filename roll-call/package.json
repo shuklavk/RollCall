@@ -1,20 +1,26 @@
 {
-  "name": "my-app",
+  "name": "roll-calls",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.4.1",
     "@testing-library/user-event": "^7.2.1",
+    "body-parser": "^1.19.0",
     "bootstrap": "^4.4.1",
     "css-loader": "^3.4.2",
+    "express": "^4.17.1",
     "jquery": "^3.4.1",
+    "mysql": "^2.18.1",
+    "nodemon": "^2.0.2",
+    "path": "^0.12.7",
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
     "react-modal-login": "^1.4.5",
     "react-router": "^5.1.2",
     "react-router-dom": "^5.1.2",
-    "react-scripts": "3.4.0"
+    "react-scripts": "3.4.0",
+    "themify-icons": "^1.0.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -25,6 +31,7 @@
   "eslintConfig": {
     "extends": "react-app"
   },
+  "proxy": "http://localhost:5000",
   "browserslist": {
     "production": [
       ">0.2%",

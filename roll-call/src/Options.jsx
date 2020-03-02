@@ -4,23 +4,43 @@ import './Options.css'
 class Options extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      teacher: false
+    }
+  }
+
+  onTeacherChecked(bool){
+    if(bool){
+      this.setState({
+        teacher: true
+      })
+    }
+    this.props.onTypeChosen('Teacher')
+
+  }
+
+  onStudentChecked(bool){
+    if(bool){
+      this.setState({
+        teacher:false
+      })
+    }
+    this.props.onTypeChosen('Student')
   }
 
   render() {
     return (
-      
-      <div class="cntr">
 
-        <label for="opt1" class="radio">
-          <input type="radio" name="rdo" id="opt1" class="hidden" />
-          <span class="label"></span>Teacher
-  </label>
+      <div className="cntr">
+        <label htmlFor="opt1" className="radio">
+          <input type="radio" name="rdo" id="opt1" className="hidden" onChange= {(e) => {this.onTeacherChecked(e.target.checked)}} />
+          <span className="label"></span>Teacher
+        </label>
 
-        <label for="opt2" class="radio">
-          <input type="radio" name="rdo" id="opt2" class="hidden" />
-          <span class="label"></span>Student
-  </label>
-
+        <label htmlFor="opt2" className="radio">
+          <input type="radio" name="rdo" id="opt2" className="hidden" onChange= {(e) => {this.onStudentChecked(e.target.checked)}}/>
+          <span className="label"></span>Student
+        </label>
       </div>
     )
   }

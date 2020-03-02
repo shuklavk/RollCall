@@ -2,7 +2,7 @@ import React from 'react';
 import $ from 'jquery';
 import './SignUp.css';
 import Options from './Options'
-import {withRouter} from 'react-router';
+import { withRouter } from 'react-router';
 
 
 class SignUp extends React.Component {
@@ -12,21 +12,41 @@ class SignUp extends React.Component {
       firstName: '',
       lastName: '',
       email: '',
-      numberOfGuests: '',
+      password: '',
+      type: 'Student',
+      arrOfEmails: [],
     }
     this.onSumbitClick = this.onSumbitClick.bind(this);
+    this.onTypeChosen = this.onTypeChosen.bind(this);
+  }
+
+  componentDidMount() {
+    $.ajax({
+      method: 'GET',
+      url: '/api/getEmailList',
+      success: (message) => {
+        this.setState({
+          arrOfEmails: message
+        })
+      }
+    })
   }
 
   onSumbitClick() {
-    console.log('cicked')
-    // $.ajax({
-    //   type: 'POST',
-    //   url: '/rsvps',
-    //   data: {firstName: this.state.firstName, lastName: this.state.lastName, email: this.state.email, numberOfGuests: this.state.numberOfGuests},
-    //   success: () => {
-    //     console.log('yeet success');
-    //   }
-    // })
+    $.ajax({
+      method: 'POST',
+      url: '/api/newUser',
+      data: {
+        firstName: this.state.firstName,
+        lastName: this.state.lastName,
+        email: this.state.email,
+        password: this.state.password,
+        type: this.state.type,
+      },
+      success: (response) => {
+        console.log(response);
+      }
+    })
   }
 
   onFirstNameChange(value) {
@@ -40,13 +60,25 @@ class SignUp extends React.Component {
     })
   }
   onEmailChange(value) {
+    if (this.state.arrOfEmails.includes(value)) {
+      alert('Email taken! Re-enter a new email');
+      document.getElementById('email').value = '';
+    } else {
+      this.setState({
+        email: value,
+      })
+    }
+  }
+  onPasswordChange(value) {
     this.setState({
-      email: value,
+      password: value,
     })
   }
-  onGuestChange(value) {
+
+  onTypeChosen(value) {
+    // let newType = value || 'Student'
     this.setState({
-      numberOfGuests: value,
+      type: value
     })
   }
 
@@ -72,10 +104,10 @@ class SignUp extends React.Component {
           </div>
           <div >
             {/* <label htmlFor="email">Enter your email: </label> */}
-            <input type="password" name="password" placeholder="Password" id="password" required onChange={(e) => { this.onEmailChange(e.target.value) }} />
+            <input type="password" name="password" placeholder="Password" id="password" required onChange={(e) => { this.onPasswordChange(e.target.value) }} />
           </div>
           <div>
-              <Options />
+            <Options onTypeChosen={this.onTypeChosen} />
           </div>
           <div >
             <input className='btn_1' type="submit" value="Sign Up!" />

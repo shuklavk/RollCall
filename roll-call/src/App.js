@@ -21,7 +21,7 @@ function App() {
                       those who show up.
                   </p>
                     <Link to="/login">
-                      <a href="#" className="btn_1">Log In </a>
+                      <button className="btn_1">Log In </button>
                     </Link>
                     <Link to="/signup">
                       <button className="btn_2">Sign Up </button>
