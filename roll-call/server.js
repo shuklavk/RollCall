@@ -3,6 +3,18 @@ const path = require('path');
 const bodyParser = require('body-parser');
 const app = express();
 const db = require('./database/index');
+const upload = require('./upload');
+const cors = require('cors');
+
+var corsOptions = {
+  origin: '*',
+  optionsSuccessStatus: 200,
+}
+
+app.use(cors(corsOptions));
+
+app.post('/upload', upload)
+
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
