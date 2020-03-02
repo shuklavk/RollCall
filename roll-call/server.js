@@ -28,6 +28,25 @@ app.get('/api/getEmailList', (req,res) => {
     console.log('Sent list of emails');
 });
 
+app.get('/api/getLoginList', (req,res) => {
+  db.selectAll((err, response) => {
+    if(err){
+      console.log(err);
+    }else{
+      const objOfLoginInfo = {};
+      for(let i =0; i < response.length; i++){
+        let emailOfUser = (response[i].email);
+        let password = response[i].password;
+        objOfLoginInfo[emailOfUser] = password;
+      }
+      res.send(objOfLoginInfo);
+    }
+  })
+
+  // res.json(list);
+  console.log('Sent list of logins');
+});
+
 app.post('/api/newUser', (req,res) => {
   console.log(req.body);
   db.insertPerson(req.body,(err, success) => {

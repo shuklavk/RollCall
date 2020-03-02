@@ -1,41 +1,45 @@
 import React from 'react';
 import $ from 'jquery';
 import './Login.css';
-import {withRouter} from 'react-router';
+import { withRouter } from 'react-router';
 
 
 class Login extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      firstName: '',
-      lastName: '',
       email: '',
-      numberOfGuests: '',
+      password: '',
+      arrOfLoginCredentials: [],
     }
     this.onSumbitClick = this.onSumbitClick.bind(this);
   }
 
-  onSumbitClick() {
-    console.log('cicked')
-    // $.ajax({
-    //   type: 'POST',
-    //   url: '/rsvps',
-    //   data: {firstName: this.state.firstName, lastName: this.state.lastName, email: this.state.email, numberOfGuests: this.state.numberOfGuests},
-    //   success: () => {
-    //     console.log('yeet success');
-    //   }
-    // })
-  }
-
-  onFirstNameChange(value) {
-    this.setState({
-      firstName: value,
+  componentDidMount() {
+    $.ajax({
+      method: 'GET',
+      url: '/api/getLoginList',
+      success: (message) => {
+        console.log(message);
+        this.setState({
+          arrOfLoginCredentials: message
+        })
+      }
     })
   }
-  onLastNameChange(value) {
+
+  onSumbitClick(e) {
+    const {arrOfLoginCredentials, email, password} = this.state;
+    if (Object.keys(arrOfLoginCredentials).indexOf(email) === -1 || arrOfLoginCredentials[email] !== password) {
+      e.preventDefault();
+      alert('Invalid Email and/or Password');
+      return false;
+    }
+  }
+
+  onPasswordChange(value) {
     this.setState({
-      lastName: value,
+      password: value,
     })
   }
   onEmailChange(value) {
@@ -43,11 +47,7 @@ class Login extends React.Component {
       email: value,
     })
   }
-  onGuestChange(value) {
-    this.setState({
-      numberOfGuests: value,
-    })
-  }
+
 
   render() {
     return (
@@ -56,14 +56,14 @@ class Login extends React.Component {
         <h1 id="signUpLabel">
           Login to Roll Call
         </h1>
-        <form action="" method="get" onSubmit={() => this.onSumbitClick()}>
+        <form action={'/teacher'} method="get" onSubmit={(e) => this.onSumbitClick(e)}>
           <div >
             {/* <label htmlFor="email">Enter your email: </label> */}
-            <input type="email" name="email" placeholder="Email" id="email" required onChange={(e) => { this.onEmailChange(e.target.value) }} />
+            <input type="email" placeholder="Email" id="email" required onChange={(e) => { this.onEmailChange(e.target.value) }} />
           </div>
           <div >
             {/* <label htmlFor="email">Enter your email: </label> */}
-            <input type="password" name="password" placeholder="Password" id="password" required onChange={(e) => { this.onEmailChange(e.target.value) }} />
+            <input type="password" placeholder="Password" id="password" required onChange={(e) => { this.onPasswordChange(e.target.value) }} />
           </div>
           <div >
             <input className='btn_1' type="submit" value="Login" />

@@ -92,19 +92,19 @@ class SignUp extends React.Component {
         <form action="/login" method="get" onSubmit={() => this.onSumbitClick()}>
           <div >
             {/* <label htmlFor="firstName">Enter your first name: </label> */}
-            <input type="text" name="firstName" id="firstName" placeholder="First Name" required onChange={(e) => { this.onFirstNameChange(e.target.value) }} />
+            <input type="text"  id="firstName" placeholder="First Name" required onChange={(e) => { this.onFirstNameChange(e.target.value) }} />
           </div>
           <div >
             {/* <label htmlFor="lastName">Enter your last name: </label> */}
-            <input type="text" name="lastName" placeholder="Last Name" id="lastName" required onChange={(e) => { this.onLastNameChange(e.target.value) }} />
+            <input type="text"  placeholder="Last Name" id="lastName" required onChange={(e) => { this.onLastNameChange(e.target.value) }} />
           </div>
           <div >
             {/* <label htmlFor="email">Enter your email: </label> */}
-            <input type="email" name="email" placeholder="Email" id="email" required onChange={(e) => { this.onEmailChange(e.target.value) }} />
+            <input type="email"  placeholder="Email" id="email" required onChange={(e) => { this.onEmailChange(e.target.value) }} />
           </div>
           <div >
             {/* <label htmlFor="email">Enter your email: </label> */}
-            <input type="password" name="password" placeholder="Password" id="password" required onChange={(e) => { this.onPasswordChange(e.target.value) }} />
+            <input type="password"  placeholder="Password" id="password" required onChange={(e) => { this.onPasswordChange(e.target.value) }} />
           </div>
           <div>
             <Options onTypeChosen={this.onTypeChosen} />
