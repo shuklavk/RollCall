@@ -1,12 +1,31 @@
 import React from 'react';
+import Unsplash from 'unsplash-js';
+import { toJson } from "unsplash-js";
+const unsplash = new Unsplash({
+  accessKey: "8h9wdatDrugd4YLMhWPGyDl-QL2UBQnSrJ3Sn3GKoaU",
+  secret: "nxRA_GcpDwKOMpj19ltHwkQ52VTyaEnbM7pbz98tUvA"
+});
 
 class ClassesCard extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      imgURL: "",
+    }
+  }
+
+  getImages(search, ind){
+    unsplash.search.photos(search, 1,20, { orientation: "landscape" })
+  .then(toJson)
+  .then(json => {
+    this.setState({imgURL: json.results[ind].urls.raw});
+  });
   }
 
   render() {
-    const { classTitle, daysOfClass, timeOfClass, location, classImage, classId } = this.props;
+    const { classTitle, daysOfClass, timeOfClass, location, classId } = this.props;
+    this.getImages('education', classId)
+    let classImage = this.state.imgURL;
     return (
       <div className="col-sm-6 col-lg-4">
         <div className="single_special_cource">

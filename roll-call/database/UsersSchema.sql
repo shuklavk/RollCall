@@ -22,6 +22,15 @@ CREATE TABLE pageInfo (
   PRIMARY KEY (id)
 );
 
+CREATE TABLE classInfo (
+  id int NOT NULL AUTO_INCREMENT,
+  classTitle VARCHAR(255) NOT NULL,
+  daysOfClass VARCHAR(255) NOT NULL,
+  timeOfClass VARCHAR(255) NOT NULL,
+  location VARCHAR(255) NOT NULL,
+  PRIMARY KEY (id)
+);
+
 
 -- To put schema into database:
 -- mysql -u root -p < database/UsersSchema.sql

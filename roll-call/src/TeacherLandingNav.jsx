@@ -19,7 +19,7 @@ class TeacherLandingNav extends React.Component{
                         <a className="nav-link" href="/teacher">Home</a>
                       </li>
                       <li className="nav-item">
-                        <a className="nav-link" href="about.html">Classes</a>
+                        <a className="nav-link" href="/classes">Classes</a>
                       </li>
                       <li className="nav-item">
                         <a className="nav-link" href="cource.html">Students</a>
@@ -37,7 +37,7 @@ class TeacherLandingNav extends React.Component{
                         <a className="nav-link" href="/">Sign Out</a>
                       </li>
                       <li className="d-none d-lg-block">
-                        <a className="btn_1" href="#">+ New Class</a>
+                        <a className="btn_1" href="/newClass">+ New Class</a>
                       </li>
                     </ul>
                   </div>

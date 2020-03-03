@@ -59,6 +59,30 @@ app.get('/api/getLoginList', (req,res) => {
   console.log('Sent list of logins');
 });
 
+app.get('/api/getClasses', (req,res) => {
+  db.selectAllClasses((err, response) => {
+    if(err){
+      console.log(err);
+    }else{
+      const arrOfClasses = [];
+      for(let i =0; i < response.length; i++){
+        let id = response[i].id;
+        let classTitle = response[i].classTitle;
+        let daysOfClass = response[i].daysOfClass;
+        let timeOfClass = response[i].timeOfClass;
+        let location = response[i].location;
+        let classImage ="";
+        let newObj = {id,classTitle,daysOfClass, timeOfClass, location, classImage};
+        arrOfClasses.push(newObj);
+      }
+      res.send(arrOfClasses);
+    }
+  })
+
+  // res.json(list);
+  console.log('Sent list of logins');
+});
+
 app.get('/api/getUploadedFiles', (req,res) => {
   db.selectAllFiles((err, response) => {
     if(err){
@@ -83,6 +107,17 @@ app.get('/api/getUploadedFiles', (req,res) => {
 app.post('/api/newUser', (req,res) => {
   console.log(req.body);
   db.insertPerson(req.body,(err, success) => {
+    if(err){
+      console.log(err);
+    }else{
+      res.send(success);
+    }
+  })
+})
+
+app.post('/api/newClass', (req,res) => {
+  console.log(req.body);
+  db.insertClass(req.body,(err, success) => {
     if(err){
       console.log(err);
     }else{

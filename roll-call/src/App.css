@@ -2184,6 +2184,14 @@ ul {
   z-index: 999;
 }
 
+/* .main_menu #add{
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  z-index: 999;
+} */
+
 /* line 8, E:/172 Etrain Education/172_Etrain_Education_html/sass/_menu.scss */
 .main_menu .navbar-brand {
   padding: 0rem !important;
