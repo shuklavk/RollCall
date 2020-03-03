@@ -14,5 +14,14 @@ CREATE TABLE userInfo (
   PRIMARY KEY (id)
 );
 
+CREATE TABLE pageInfo (
+  id int NOT NULL AUTO_INCREMENT,
+  documentName VARCHAR(255) NOT NULL,
+  documentLink VARCHAR(255) NOT NULL,
+  uploadTime VARCHAR(255) NOT NULL,
+  PRIMARY KEY (id)
+);
+
+
 -- To put schema into database:
 -- mysql -u root -p < database/UsersSchema.sql

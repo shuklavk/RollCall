@@ -1919,6 +1919,7 @@ ul {
   background: transparent;
   border-top: 1px solid #eee;
   padding: 45px 0;
+  padding-bottom: 145px;
   margin-top: 50px;
 }
 
@@ -4255,7 +4256,7 @@ ul {
 
 /* line 28, E:/172 Etrain Education/172_Etrain_Education_html/sass/_cource_details.scss */
 .comments-area .thumb img {
-  width: 100px !important;
+  width: 55px !important;
   border-radius: 0;
 }
 

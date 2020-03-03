@@ -59,6 +59,27 @@ app.get('/api/getLoginList', (req,res) => {
   console.log('Sent list of logins');
 });
 
+app.get('/api/getUploadedFiles', (req,res) => {
+  db.selectAllFiles((err, response) => {
+    if(err){
+      console.log(err);
+    }else{
+      const arrOfFileInfo = [];
+      for(let i =0; i < response.length; i++){
+        let documentName = (response[i].documentName);
+        let documentLink = response[i].documentLink;
+        let uploadTime = response[i].uploadTime;
+        let tempObj = {documentName, documentLink, uploadTime};
+        arrOfFileInfo.push(tempObj);
+      }
+      res.send(arrOfFileInfo);
+    }
+  })
+
+  // res.json(list);
+  console.log('Sent list of logins');
+});
+
 app.post('/api/newUser', (req,res) => {
   console.log(req.body);
   db.insertPerson(req.body,(err, success) => {

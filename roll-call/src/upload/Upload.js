@@ -20,6 +20,10 @@ class Upload extends Component {
     this.renderActions = this.renderActions.bind(this);
   }
 
+  // componentDidUpdate(){
+  //   this.props.getArrOfUploadedFiles();
+  // }
+
   onFilesAdded(files) {
     this.setState(prevState => ({
       files: prevState.files.concat(files)
@@ -49,38 +53,21 @@ class Upload extends Component {
   renderActions() {
     if (this.state.successfullUploaded) {
       return (
-        // <button
-        //   onClick={() =>
-        //     this.setState({ files: [], successfullUploaded: false })
-        //   }
-        //   className="d-none d-lg-block"
-        // >
-        //   Clear
-        // </button>
         <li className="d-none d-lg-block">
-          <a className="btn_1"
-            href="#"
+          <button className="btn_1"
             onClick={() =>
               this.setState({ files: [], successfullUploaded: false })
             }
-          >Clear</a>
+          >Clear</button>
         </li>
       );
     } else {
       return (
-        // <button
-        //   disabled={this.state.files.length < 0 || this.state.uploading}
-        //   onClick={this.uploadFiles}
-        //   className="d-none d-lg-block"
-        // >
-        //   Upload
-        // </button>
         <li className="d-none d-lg-block">
-          <a className="btn_1"
-            href="#"
+          <button className="btn_1"
             disabled={this.state.files.length < 0 || this.state.uploading}
             onClick={this.uploadFiles}
-          >Upload</a>
+          >Upload</button>
         </li>
       );
     }
@@ -93,9 +80,12 @@ class Upload extends Component {
       promises.push(this.sendRequest(file));
     });
     try {
+      // this.props.getArrOfUploadedFiles();
       await Promise.all(promises);
+      this.props.getArrOfUploadedFiles();
 
       this.setState({ successfullUploaded: true, uploading: false });
+      // this.props.getArrOfUploadedFiles();
     } catch (e) {
       // Not Production ready! Do some error handling here instead...
       this.setState({ successfullUploaded: true, uploading: false });

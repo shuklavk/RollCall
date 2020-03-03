@@ -16,7 +16,7 @@ class TeacherLandingNav extends React.Component{
                     id="navbarSupportedContent">
                     <ul className="navbar-nav align-items-center">
                       <li className="nav-item active">
-                        <a className="nav-link" href="index.html">Home</a>
+                        <a className="nav-link" href="/teacher">Home</a>
                       </li>
                       <li className="nav-item">
                         <a className="nav-link" href="about.html">Classes</a>
@@ -25,7 +25,7 @@ class TeacherLandingNav extends React.Component{
                         <a className="nav-link" href="cource.html">Students</a>
                       </li>
                       <li className="nav-item dropdown">
-                        <a className="nav-link dropdown-toggle" href="blog.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <a className="nav-link dropdown-toggle" href="/pages" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                           Pages
                                     </a>
                         <div className="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -34,7 +34,7 @@ class TeacherLandingNav extends React.Component{
                         </div>
                       </li>
                       <li className="nav-item">
-                        <a className="nav-link" href="contact.html">Sign Out</a>
+                        <a className="nav-link" href="/">Sign Out</a>
                       </li>
                       <li className="d-none d-lg-block">
                         <a className="btn_1" href="#">+ New Class</a>
