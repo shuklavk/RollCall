@@ -22,10 +22,7 @@ As the lecture continues, there will be space for students to put questions in a
 
 # Technologies Used #
 
-React, Node/Express, mySQL 
-React Router 
-Amazon AWS S3 Bucket 
-Unsplash API to get a different image every time someone creates a class 
+React, Node/Express, mySQL, React Router, Amazon AWS S3 Bucket, Unsplash API to get a different image every time someone creates a class 
 
 
 
