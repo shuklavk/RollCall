@@ -24,7 +24,7 @@ class TeacherLanding extends React.Component {
               <div className="col-md-5 col-lg-5">
                 <div className="learning_member_text">
                   {/* <h5>About us</h5> */}
-                  <h2>Sort through you classes</h2>
+                  <h2>Sort through your classes</h2>
                   <p>Organizes each class you teach. Keeps a log of all enrolled students and maintains
                     their attendance records. Has ability to drop different documents to different classes.
                     </p>

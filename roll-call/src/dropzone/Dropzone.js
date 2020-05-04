@@ -76,6 +76,7 @@ class Dropzone extends Component {
           className="FileInput"
           type="file"
           multiple
+          // 3) Adding of file happens in this input box
           onChange={this.onFilesAdded}
         />
         <img

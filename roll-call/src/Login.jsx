@@ -11,6 +11,8 @@ class Login extends React.Component {
       email: '',
       password: '',
       arrOfLoginCredentials: [],
+      arrOfUsers:[],
+      url: '',
     }
     this.onSumbitClick = this.onSumbitClick.bind(this);
   }
@@ -20,10 +22,22 @@ class Login extends React.Component {
       method: 'GET',
       url: '/api/getLoginList',
       success: (message) => {
-        console.log(message);
+        // console.log(message);
         this.setState({
           arrOfLoginCredentials: message
         })
+      }
+    })
+
+    $.ajax({
+      method: 'GET',
+      url: '/api/getUserList',
+      success: (message) => {
+        // console.log(message);
+        this.setState({
+          arrOfUsers: message
+        })
+        // console.log(message);
       }
     })
   }
@@ -34,13 +48,34 @@ class Login extends React.Component {
       e.preventDefault();
       alert('Invalid Email and/or Password');
       return false;
+    }else{
+      for(let i =0; i < this.state.arrOfUsers.length; i++){
+        if(this.state.arrOfUsers[i][email] === password){
+          let type = this.state.arrOfUsers[i].type;
+          let lowerType = '/' +type.toLowerCase();
+          this.setState({
+            url:lowerType
+          })
+        }
+      }
     }
   }
 
   onPasswordChange(value) {
+    const {email, password} = this.state;
+
     this.setState({
       password: value,
     })
+    // for(let i =0; i < this.state.arrOfUsers.length; i++){
+    //   if(this.state.arrOfUsers[i][email] === password){
+    //     let Stype = this.state.arrOfUsers[i].type;
+    //     let lowerType = '/' +Stype.toLowerCase();
+    //     this.setState({
+    //       url:lowerType
+    //     })
+    //   }
+    // }
   }
   onEmailChange(value) {
     this.setState({
@@ -56,7 +91,7 @@ class Login extends React.Component {
         <h1 id="signUpLabel">
           Login to Roll Call
         </h1>
-        <form action={'/teacher'} method="get" onSubmit={(e) => this.onSumbitClick(e)}>
+        <form action={"/teacher"} method="get" onSubmit={(e) => this.onSumbitClick(e)}>
           <div >
             {/* <label htmlFor="email">Enter your email: </label> */}
             <input type="email" placeholder="Email" id="email" required onChange={(e) => { this.onEmailChange(e.target.value) }} />

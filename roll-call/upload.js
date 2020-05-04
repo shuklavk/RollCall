@@ -8,6 +8,8 @@ const BUCKET_NAME = 'rollcall.vikas';
 const IAM_USER_KEY = s3Requirements.AccessKeyID;
 const IAM_USER_SECRET = s3Requirements.SecretAccessKey;
 
+// 10) takes a file and uploads to specific s3 bucket
+// from AWS documentation
 function uploadToS3(file) {
   let s3bucket = new AWS.S3({
     accessKeyId: IAM_USER_KEY,

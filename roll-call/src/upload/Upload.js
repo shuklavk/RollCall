@@ -8,6 +8,7 @@ class Upload extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      // 1) Files Array to save all the files
       files: [],
       uploading: false,
       uploadProgress: {},
@@ -20,10 +21,7 @@ class Upload extends Component {
     this.renderActions = this.renderActions.bind(this);
   }
 
-  // componentDidUpdate(){
-  //   this.props.getArrOfUploadedFiles();
-  // }
-
+  // Function that adds files to array
   onFilesAdded(files) {
     this.setState(prevState => ({
       files: prevState.files.concat(files)
@@ -66,6 +64,7 @@ class Upload extends Component {
         <li className="d-none d-lg-block">
           <button className="btn_1"
             disabled={this.state.files.length < 0 || this.state.uploading}
+            // 5) Render Actions calls upload files
             onClick={this.uploadFiles}
           >Upload</button>
         </li>
@@ -77,6 +76,7 @@ class Upload extends Component {
     this.setState({ uploadProgress: {}, uploading: true });
     const promises = [];
     this.state.files.forEach(file => {
+      // 6) UploadFiles calls sendRequest for each file in the array
       promises.push(this.sendRequest(file));
     });
     try {
@@ -132,10 +132,11 @@ class Upload extends Component {
         this.setState({ uploadProgress: copy });
         reject(req.response);
       });
-
+      // 7) sendRequest creates a FormData object with the file 
       const formData = new FormData();
       formData.append("file", file, file.name);
 
+      // 8) Calls the /upload route in server and sends the formData (with the file)
       req.open("POST", "http://localhost:5000/upload");
       req.send(formData);
     });
@@ -148,7 +149,9 @@ class Upload extends Component {
         <span className="Title">Upload Files</span>
         <div className="Content">
           <div>
+            {/* 2) Dropzone Component adds files to files array  */}
             <Dropzone
+            // takes in arr of files and concats with this.state.files
               onFilesAdded={this.onFilesAdded}
               disabled={this.state.uploading || this.state.successfullUploaded}
             />
@@ -165,6 +168,7 @@ class Upload extends Component {
           </div>
         </div>
         <div className="Actions">
+        {/* 4) Render Actions is called */}
           {this.renderActions()}
         </div>
       </div>

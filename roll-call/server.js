@@ -13,6 +13,8 @@ var corsOptions = {
 
 app.use(cors(corsOptions));
 
+
+// 9) Here is the /upload in server.js
 app.post('/upload', upload)
 
 
@@ -38,6 +40,18 @@ app.get('/api/getEmailList', (req,res) => {
 
     // res.json(list);
     console.log('Sent list of emails');
+});
+
+app.get('/api/getUserList', (req,res) => {
+  db.selectAll((err, response) => {
+    if(err){
+      console.log(err);
+    }else{
+      res.send(response);
+    }
+  })
+
+  // res.json(list)
 });
 
 app.get('/api/getLoginList', (req,res) => {
@@ -101,7 +115,7 @@ app.get('/api/getUploadedFiles', (req,res) => {
   })
 
   // res.json(list);
-  console.log('Sent list of logins');
+  // console.log('Sent list of logins');
 });
 
 app.post('/api/newUser', (req,res) => {
